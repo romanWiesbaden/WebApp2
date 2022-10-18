@@ -16,13 +16,16 @@ insert into tshirt (tshirt_uid, size, color) values (uuid_generate_v4(), 'XS', '
 
 create table client (
     client_uid UUID NOT NULL PRIMARY KEY,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    myaddress VARCHAR(50) NOT NULL,
+    firstName VARCHAR(50) NOT NULL,
+    lastName VARCHAR(50) NOT NULL,
+    street VARCHAR(50) NOT NULL,
+    houseNumber Number(19) NOT NULL,
+    zipCode Number(19) NOT NULL,
+    city VARCHAR(50) NOT NULL,
     email VARCHAR(100),
-    tshirt_uid UUID REFERENCES tshirt (tshirt_uid),
-    UNIQUE(tshirt_uid),
-    UNIQUE(email)
+    agreement Timestamp,
+    tshirtSize VARCHAR(5) NOT NULL,
+    UNIQUE(email, firstName, lastName)
 
 );
 
